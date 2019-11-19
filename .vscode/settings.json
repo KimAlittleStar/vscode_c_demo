@@ -1,0 +1,8 @@
+// 如果需要在用户环境下修改,那么需要将下面这三项复制到user目录下的setting.json文件即可
+// 同时bash.exe 应该需要根据你的改变而改变
+// gcc.exe 的位置应该也要根据你的安装位置改变而改变
+{
+    "terminal.integrated.automationShell.windows": "C:/Program Files/Git/bin/bash.exe",
+    "C_Cpp.default.compilerPath": "C:/Qt/Tools/mingw730_64/bin/gcc.exe",
+    "terminal.integrated.shell.windows": "C:/Program Files/Git/bin/bash.exe"
+}

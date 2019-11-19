@@ -1,0 +1,45 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    //此 json 文件中需要注意的就是 执行makefile的执行文件是 mingw32-make.exe ,如果你使用qmake 或者其他make 执行文件,替换它即可;其他不需要修改
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build", //task的名字,调用方式就是 task build
+            "command": "mingw32-make.exe", //会在命令行中调用此命令
+            "args": [ //调用上述 mingw32-make.exe 传递给它的参数
+                "target=${workspaceRootFolderName}.exe" //${workspaceRootFolderName} 会被替换成 根目录 即:vscode_c_demo
+            ],
+            "type": "shell",
+            "problemMatcher": []
+        }, //此命令等效展开为:mingw32-make.exe target=vscode_c_demo.exe
+        {
+            "label": "build-debug",
+            "command": "mingw32-make.exe",
+            "args": [
+                "target=${workspaceRootFolderName}.exe",
+                "DEBUG=-g", //添加debug 参数 使gcc 生成调试信息
+                "PREDEF=Debug" //相当于在程序中定义了一个宏定义 #define Debug
+            ],
+            "type": "shell"
+        }, //此命令等效展开为:mingw32-make.exe target=vscode_c_demo.exe DEBUG=-g PREDEF=Debug
+        {
+            "label": "clean",
+            "command": "mingw32-make.exe",
+            "args": [
+                "clean",
+                "target=${workspaceRootFolderName}.exe"
+            ],
+            "type": "shell",
+            "problemMatcher": []
+        }, //此命令等效展开为:mingw32-make.exe clean target=vscode_c_demo.exe
+        {
+            "label": "runing",
+            "command": "./runExcute.sh",
+            "args": [
+                "${workspaceRootFolderName}.exe" // 传给脚本的参数
+            ],
+            "type": "shell"
+        } //此命令等效展开为:mingw32-make.exe target=vscode_c_demo.exe  然后执行 ./vscode_c_demo.exe
+    ]
+}

@@ -6,8 +6,9 @@ int main(void)
     for (;;)
     {
         //scanf("%s",commend);
+        printf("typing your command\n");
         fgets(commend, 499, stdin);
-        //	printf("reciver :%s--!\n",commend);
         ExternFunc_excute(commend);
     }
 }
+
