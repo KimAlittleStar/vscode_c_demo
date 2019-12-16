@@ -23,7 +23,7 @@
                 "target=${workspaceRootFolderName}.exe",
                 "TYPE=C", //指定文件类型
                 "DEBUG=-g", //添加debug 参数 使gcc 生成调试信息
-                "PREDEF=_DEBUG MEMWATCH MW_STDIO" //相当于在程序中定义了一个宏定义 #define Debug
+                "PREDEF=_DEBUG" //相当于在程序中定义了一个宏定义 #define Debug
             ],
             "type": "shell"
         }, //此命令等效展开为:mingw32-make.exe target=vscode_c_demo.exe DEBUG=-g PREDEF=Debug

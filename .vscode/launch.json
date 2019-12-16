@@ -20,10 +20,10 @@
             "stopAtEntry": false, //时候要在main函数处自动停止,false表示不会停止,true表示会在main函数处自动停止;
             "cwd": "${workspaceFolder}", //表示首先要切换到当前目录下
             "environment": [],
-            "externalConsole": true, //为true时,会新建一个黑窗口运行程序,如果为false ,就会在vscode中新建终端,
+            "externalConsole": false, //为true时,会新建一个黑窗口运行程序,如果为false ,就会在vscode中新建终端,
             //不过这样就需要在用户设置中设置默认bash 为 gitbash,否则会报错
             "MIMode": "gdb",
-            "miDebuggerPath": "C:/Qt/Tools/mingw730_64/bin/gdb.exe", // 这里填写的应该是你自己gdb.exe文件的路径;一般与g++.exe minwg32-make.exe 在同一文件夹下
+            "miDebuggerPath": "E:/userFile/userSoftware/Qt/Tools/mingw730_64/bin/gdb.exe", // 这里填写的应该是你自己gdb.exe文件的路径;一般与g++.exe minwg32-make.exe 在同一文件夹下
             "setupCommands": [
                 {
                     "description": "为 gdb 启用整齐打印",
