@@ -5,22 +5,22 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build", //task的名字,调用方式就是 task build
+            "label": "build-c", //task的名字,调用方式就是 task build
             "command": "mingw32-make.exe", //会在命令行中调用此命令
             "args": [ //调用上述 mingw32-make.exe 传递给它的参数
                 "-j6",
-                "target=${workspaceRootFolderName}.exe", //${workspaceRootFolderName} 会被替换成 根目录 即:vscode_c_demo
+                "target=${workspaceRootFolderName}_C_release.exe", //${workspaceRootFolderName} 会被替换成 根目录 即:vscode_c_demo
                 "TYPE=C" //指定文件类型
             ],
             "type": "shell",
             "problemMatcher": []
         }, //此命令等效展开为:mingw32-make.exe target=vscode_c_demo.exe
         {
-            "label": "build-debug",
+            "label": "build-c-debug",
             "command": "mingw32-make.exe",
             "args": [
                 "-j6",
-                "target=${workspaceRootFolderName}.exe",
+                "target=${workspaceRootFolderName}_C_debug.exe",
                 "TYPE=C", //指定文件类型
                 "DEBUG=-g", //添加debug 参数 使gcc 生成调试信息
                 "PREDEF=_DEBUG" //相当于在程序中定义了一个宏定义 #define Debug
@@ -28,25 +28,69 @@
             "type": "shell"
         }, //此命令等效展开为:mingw32-make.exe target=vscode_c_demo.exe DEBUG=-g PREDEF=Debug
         {
-            "label": "clean",
+            "label": "c-clean",
             "command": "mingw32-make.exe",
             "args": [
                 "-j6",
                 "clean",
                 "TYPE=C", //指定文件类型
-                "target=${workspaceRootFolderName}.exe"
+                "target=${workspaceRootFolderName}*.exe"
+            ],
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "build-cpp", //task的名字,调用方式就是 task build
+            "command": "mingw32-make.exe", //会在命令行中调用此命令
+            "args": [ //调用上述 mingw32-make.exe 传递给它的参数
+                "-j6",
+                "target=${workspaceRootFolderName}_CPP_release.exe", //${workspaceRootFolderName} 会被替换成 根目录 即:vscode_c_demo
+                "TYPE=C++" //指定文件类型
+            ],
+            "type": "shell",
+            "problemMatcher": []
+        }, //此命令等效展开为:mingw32-make.exe target=vscode_c_demo_CPP_release.exe
+        {
+            "label": "build-cpp-debug",
+            "command": "mingw32-make.exe",
+            "args": [
+                "-j6",
+                "target=${workspaceRootFolderName}_CPP_debug.exe",
+                "TYPE=C++", //指定文件类型
+                "DEBUG=-g", //添加debug 参数 使gcc 生成调试信息
+                "PREDEF=_DEBUG" //相当于在程序中定义了一个宏定义 #define Debug
+            ],
+            "type": "shell"
+        }, //此命令等效展开为:mingw32-make.exe target=vscode_c_demo_CPP_debug.exe DEBUG=-g PREDEF=Debug
+        {
+            "label": "cpp-clean",
+            "command": "mingw32-make.exe",
+            "args": [
+                "-j6",
+                "clean",
+                "TYPE=C", //指定文件类型
+                "target=${workspaceRootFolderName}*.exe"
             ],
             "type": "shell",
             "problemMatcher": []
         }, //此命令等效展开为:mingw32-make.exe clean target=vscode_c_demo.exe
         {
-            "label": "runing",
+            "label": "runing_cpp",
             "command": "./runExcute.sh",
             "args": [
-                "${workspaceRootFolderName}.exe", // 传给脚本的参数
+                "${workspaceRootFolderName}_CPP_release.exe", // 传给脚本的参数
+                "C++" //指定文件类型
+            ],
+            "type": "shell"
+        }, //此命令等效展开为:mingw32-make.exe target=vscode_c_demo_CPP_release.exe  然后执行 ./vscode_c_demo_CPP_release.exe
+        {
+            "label": "runing_c",
+            "command": "./runExcute.sh",
+            "args": [
+                "${workspaceRootFolderName}_C_release.exe", // 传给脚本的参数
                 "C" //指定文件类型
             ],
             "type": "shell"
-        } //此命令等效展开为:mingw32-make.exe target=vscode_c_demo.exe  然后执行 ./vscode_c_demo.exe
+        } //此命令等效展开为:mingw32-make.exe target=vscode_c_demo_C_release.exe.exe  然后执行 ./vscode_c_demo_C_release.exe.exe
     ]
 }

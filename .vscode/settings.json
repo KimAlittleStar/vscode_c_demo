@@ -3,7 +3,6 @@
 // gcc.exe 的位置应该也要根据你的安装位置改变而改变
 {
     "terminal.integrated.automationShell.windows": "D:/Program Files/Git/Git/bin/bash.exe",
-    "C_Cpp.default.compilerPath": "E:/userFile/userSoftware/Qt/Tools/mingw730_64/bin/gcc.exe",
     "terminal.integrated.shell.windows": "D:/Program Files/Git/Git/bin/bash.exe",
     "files.associations": {
         "*.h": "c",

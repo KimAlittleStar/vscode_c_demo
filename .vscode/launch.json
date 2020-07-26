@@ -11,11 +11,11 @@
     // 这里调用的exe 应就是 task build-debug 中生成的可执行文件;
     "version": "0.2.0",
     "configurations": [
-        {
-            "name": "(gdb) 启动", //名字,会显示在debug 的选项中
+    {
+            "name": "C_Debug单步调试", //名字,会显示在debug 的选项中
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/${workspaceRootFolderName}.exe", //表示要调试的可执行文件在当前打开的文件下下的这个文件,此名称需要和task 中的target=<>,一一对应;
+            "program": "${workspaceFolder}/${workspaceRootFolderName}_C_debug.exe", //表示要调试的可执行文件在当前打开的文件下下的这个文件,此名称需要和task 中的target=<>,一一对应;
             "args": [],
             "stopAtEntry": false, //时候要在main函数处自动停止,false表示不会停止,true表示会在main函数处自动停止;
             "cwd": "${workspaceFolder}", //表示首先要切换到当前目录下
@@ -23,7 +23,7 @@
             "externalConsole": false, //为true时,会新建一个黑窗口运行程序,如果为false ,就会在vscode中新建终端,
             //不过这样就需要在用户设置中设置默认bash 为 gitbash,否则会报错
             "MIMode": "gdb",
-            "miDebuggerPath": "E:/userFile/userSoftware/Qt/Tools/mingw730_64/bin/gdb.exe", // 这里填写的应该是你自己gdb.exe文件的路径;一般与g++.exe minwg32-make.exe 在同一文件夹下
+            "miDebuggerPath": "C:/mingw64/bin/gdb.exe", // 这里填写的应该是你自己gdb.exe文件的路径;一般与g++.exe minwg32-make.exe 在同一文件夹下
             "setupCommands": [
                 {
                     "description": "为 gdb 启用整齐打印",
@@ -31,7 +31,29 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "build-debug" //在执行这个gdb launcher 之前,首先执行task build-debug;
+            "preLaunchTask": "build-c-debug" //在执行这个gdb launcher 之前,首先执行task build-debug;
+        },
+        {
+            "name": "CPP_Debug", //名字,会显示在debug 的选项中
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/${workspaceRootFolderName}_CPP_debug.exe", //表示要调试的可执行文件在当前打开的文件下下的这个文件,此名称需要和task 中的target=<>,一一对应;
+            "args": [],
+            "stopAtEntry": false, //时候要在main函数处自动停止,false表示不会停止,true表示会在main函数处自动停止;
+            "cwd": "${workspaceFolder}", //表示首先要切换到当前目录下
+            "environment": [],
+            "externalConsole": false, //为true时,会新建一个黑窗口运行程序,如果为false ,就会在vscode中新建终端,
+            //不过这样就需要在用户设置中设置默认bash 为 gitbash,否则会报错
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:/mingw64/bin/gdb.exe", // 这里填写的应该是你自己gdb.exe文件的路径;一般与g++.exe minwg32-make.exe 在同一文件夹下
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build-cpp-debug" //在执行这个gdb launcher 之前,首先执行task build-debug;
         }
     ]
 }
