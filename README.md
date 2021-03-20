@@ -1,5 +1,10 @@
 # 一个在vscode上开发的测试例程
 -------
+## VSCODE 环境搭建说明  
+    安装Git for Windows 之后,电脑本身其实已经拥有的一套最小linux命令行环境.由于 本项目中的makefile需要使用到其中的 grep等
+    命令行.因此,如果你不将vscode的默认命令行设置为 git-bash,那么你就需要将 /git-Program-path/usr/bin/ 添加到你的Path环境变量中  
+    例如:我的安装路径为 c:\'Program File'\Git,那么我需要添加环境变量的路径为:c:\'Program File'\Git\usr\bin.
+-------
 ## 更新说明:
 更新VScode的配置文件,可以Debug CPP项目与C项目,两者互不相通,CPP项目只能识别\*.cpp文件,C项目识别 \*.c文件.
 如果有同名文件但后缀不同时,需要先clean在build.
